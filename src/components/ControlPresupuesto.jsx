@@ -34,7 +34,8 @@ export const ControlPresupuesto = ({ gastos, presupuesto, setGastos, setPresupue
 			setGastos([]);
 			setPresupuesto(0);
 			setIsValidPre(false);
-			localStorage.clear()
+			localStorage.removeItem("presupuesto");
+			localStorage.removeItem("gastos");
 		}
 	};
 

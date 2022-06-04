@@ -13,7 +13,7 @@ function App() {
 	const [isValidPre, setIsValidPre] = useState(false);
 	const [modal, setModal] = useState(false);
 	const [animarModal, setAnimarModal] = useState(false);
-	const [gastos, setGastos] = useState(localStorage.getItem("gastos") ? JSON.parse(localStorage.getItem("gastos")) : []);
+	const [gastos, setGastos] = useState(localStorage.getItem("gastos")? JSON.parse(localStorage.getItem("gastos")) : []);
 	const [gastoEditar, setGastoEditar] = useState({});
 	const [filtro, setFiltro] = useState([]);
 	const [gastosFiltrados, setGastosFiltrados] = useState([]);
@@ -73,8 +73,6 @@ function App() {
 		if (gasto.id) {
 			const gastosActualizados = gastos.map(gastoState => (gastoState.id === gasto.id ? gasto : gastoState));
 
-			console.log(gastosActualizados);
-
 			setGastos(gastosActualizados);
 			setGastoEditar({});
 		} else {
@@ -96,13 +94,26 @@ function App() {
 
 	return (
 		<div className={modal ? "fijar" : ""}>
-			<Header gastos={gastos} setGastos={setGastos} presupuesto={presupuesto} setPresupuesto={setPresupuesto} isValidPre={isValidPre} setIsValidPre={setIsValidPre} />
+			<Header
+				gastos={gastos}
+				setGastos={setGastos}
+				presupuesto={presupuesto}
+				setPresupuesto={setPresupuesto}
+				isValidPre={isValidPre}
+				setIsValidPre={setIsValidPre}
+			/>
 
 			{isValidPre && (
 				<>
 					<main>
 						<Filtros filtro={filtro} setFiltro={setFiltro} />
-						<ListadoGastos gastos={gastos} setGastoEditar={setGastoEditar} eliminarGasto={eliminarGasto} gastosFiltrados={gastosFiltrados} filtro={filtro} />
+						<ListadoGastos
+							gastos={gastos}
+							setGastoEditar={setGastoEditar}
+							eliminarGasto={eliminarGasto}
+							gastosFiltrados={gastosFiltrados}
+							filtro={filtro}
+						/>
 					</main>
 					<div className="nuevo-gasto">
 						<img src={IconoNuevoGasto} alt="icono-nuevo-gasto" onClick={handleNuevoGasto} />

@@ -1,12 +1,11 @@
 /** @format */
 
-import React from "react";
 import { Gasto } from "./Gasto";
 
 export const ListadoGastos = ({ gastos, setGastoEditar, eliminarGasto, gastosFiltrados, filtro }) => {
 	return (
 		<div className="listado-gastos contenedor">
-			{filtro ? (
+			{filtro.length ? (
 				<>
 					<h2>{gastosFiltrados.length ? "Gastos" : "No hay Gastos en esta categoria"}</h2>
 
@@ -16,7 +15,7 @@ export const ListadoGastos = ({ gastos, setGastoEditar, eliminarGasto, gastosFil
 				</>
 			) : (
 				<>
-					<h2>{gastos.length ? "Gastos" : "No hay Gastos Aún"}</h2>
+					<h2>{gastos.length ? "Gastos:desliza para editar y eliminar" : "No hay Gastos Aún"}</h2>
 
 					{gastos.map(gasto => (
 						<Gasto key={gasto.id} gasto={gasto} setGastoEditar={setGastoEditar} eliminarGasto={eliminarGasto} />
